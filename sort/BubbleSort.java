@@ -24,6 +24,7 @@ public class BubbleSort extends Util {
 		}
 
 		if (right - left > 1) {
+			printArray();
 			sort(left, right - 1);
 		}
 	}
@@ -39,14 +40,7 @@ public class BubbleSort extends Util {
 		}
 		BubbleSort s = new BubbleSort(array);
 
-		System.out.println("Bubble Sort\n");
-		System.out.println("before sorting");
-		s.printArray();
-
-		s.sort();
-
-		System.out.println("\nafter sorting");
-		s.printArray();
+		s.startSort();
 
 		System.out.println("\nverification : " + s.verify(0, size) + ", swap : " + s.getSwapN());
 	}

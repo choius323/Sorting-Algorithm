@@ -10,11 +10,15 @@ public class RadixSortLSD extends Util {
 	final static int decimal = 10; // 10진수
 	final static int maxDigit = 3; // 최대 자릿수 (0 ~ 999)
 	Queue<Integer>[] q = new LinkedList[decimal]; // 기수 별 0 ~ 9 까지 저장할 큐
-
+	
 	public RadixSortLSD(int[] array) {
 		super(array);
 	}
 
+	public void sort() {
+		System.out.println("인수 오류");
+	}
+	
 	public void sort(int d) { // 인수가 없으면 전체 정렬
 		sort(d, 0);
 	}

@@ -4,9 +4,9 @@ import java.util.Random;
 
 import util.Util;
 
-public class InsertionSort extends Util { // 삽입 정렬
+public class ShellSort extends Util {
 
-	public InsertionSort(int[] array) {
+	public ShellSort(int[] array) {
 		super(array);
 	}
 
@@ -15,19 +15,25 @@ public class InsertionSort extends Util { // 삽입 정렬
 	}
 
 	public void sort(int left, int right) { // left ~ right 까지 정렬
-		sort(left, right, left + 1);
+		sort(left, right, (int) array.length / 2);
 	}
 
-	public void sort(int left, int right, int compareI) { // i는 정렬해야 되는 인덱스
-		for (int i = compareI; i > left; i--) {
-			if (array[i] < array[i - 1]) {
-				swap(i, i - 1);
+	public void sort(int left, int right, int gap) {
+		int i, currentV;
+
+		for (i = gap; i <= right; i++) {
+			currentV = i;
+
+			// 간격보다 내려가지 않게 조정, 같은 그룹의 이전 값과 비교
+			while (currentV >= gap && array[currentV - gap] > array[currentV]) {
+				swap(currentV, currentV - gap);
+				currentV = currentV - gap;
 			}
 		}
 
-		if (compareI < right) {
+		if (gap > 1) { // 갭이 1이 될때까지 반복
 			printArray();
-			sort(left, right, compareI + 1); // 함수 재귀 호출
+			sort(left, right, gap / 2); // 재귀함수
 		}
 	}
 
@@ -40,10 +46,11 @@ public class InsertionSort extends Util { // 삽입 정렬
 		for (int i = 0; i < size; i++) {
 			array[i] = rand.nextInt(100);
 		}
-		InsertionSort s = new InsertionSort(array);
+		ShellSort s = new ShellSort(array);
 
-		s.startSort();
+		s.startSort(); // 정렬 시작
 
 		System.out.println("\nverification : " + s.verify(0, size) + ", swap : " + s.getSwapN());
 	}
+
 }

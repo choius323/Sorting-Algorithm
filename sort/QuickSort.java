@@ -78,14 +78,7 @@ public class QuickSort extends Util{
 		}
 		QuickSort s = new QuickSort(array);
 
-		System.out.println("Quick Sort Using Median as Pivot\n");
-		System.out.println("before sorting");
-		s.printArray();
-		
-		s.sort();
-		
-		System.out.println("\nafter sorting");
-		s.printArray();
+		s.startSort();
 		
 		System.out.println("\nverification : " + s.verify(0, size) + ", swap : " + s.getSwapN());
 	}

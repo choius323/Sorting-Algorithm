@@ -1,6 +1,6 @@
 package util;
 
-public class Util {
+public abstract class Util {
 	protected int[] array;
 	private int swapN; // swap È½¼ö
 
@@ -43,5 +43,19 @@ public class Util {
 			}
 		}
 		return true;
+	}
+
+	public abstract void sort();
+
+	public void startSort() {
+		System.out.println("Shell Sort\n");
+		System.out.println("before sorting");
+		printArray();
+
+		System.out.println("\nsorting...");
+		sort();
+
+		System.out.println("\nafter sorting");
+		printArray();
 	}
 }

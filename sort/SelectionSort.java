@@ -25,6 +25,7 @@ public class SelectionSort extends Util {
 		swap(left, min); // left와 right의 자리 바꿈
 
 		if (right - left > 1) {
+			printArray();
 			sort(left + 1, right); // left 이후의 배열 정렬
 		}
 	}
@@ -40,14 +41,7 @@ public class SelectionSort extends Util {
 		}
 		SelectionSort s = new SelectionSort(array);
 
-		System.out.println("Selection Sort\n");
-		System.out.println("before sorting");
-		s.printArray();
-		
-		s.sort();
-		
-		System.out.println("\nafter sorting");
-		s.printArray();
+		s.startSort();
 		
 		System.out.println("\nverification : " + s.verify(0, size) + ", swap : " + s.getSwapN());
 	}
